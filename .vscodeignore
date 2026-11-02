@@ -1,0 +1,14 @@
+.git/**
+.github/**
+.vscode/**
+.npm-cache/**
+.test-data/**
+.vscode-test/**
+node_modules/**
+test/**
+scripts/**
+docs/**
+dist/**
+package-lock.json
+.gitignore
+**/*.log

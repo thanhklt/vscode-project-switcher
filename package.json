@@ -1,0 +1,78 @@
+{
+  "name": "project-switcher",
+  "displayName": "Project Switcher",
+  "description": "Save project folders and switch workspaces in VS Code and Antigravity IDE.",
+  "version": "0.1.1",
+  "publisher": "local-project-tools",
+  "license": "MIT",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other"],
+  "keywords": ["projects", "workspace", "switcher", "antigravity"],
+  "main": "./src/extension.js",
+  "extensionKind": ["ui"],
+  "activationEvents": ["onView:projectSwitcher.projects"],
+  "capabilities": {
+    "untrustedWorkspaces": { "supported": true },
+    "virtualWorkspaces": { "supported": false, "description": "Project Switcher opens local project folders." }
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node scripts/check.js",
+    "test:host": "node scripts/test-host.js",
+    "package": "node scripts/package.js"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.0"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "projectSwitcher.add", "title": "Add Folders", "category": "Projects", "icon": "$(add)" },
+      { "command": "projectSwitcher.saveCurrent", "title": "Save Current Project", "category": "Projects", "icon": "$(save)" },
+      { "command": "projectSwitcher.open", "title": "Open Project", "category": "Projects" },
+      { "command": "projectSwitcher.openInNewWindow", "title": "Open in New Window", "category": "Projects", "icon": "$(link-external)" },
+      { "command": "projectSwitcher.search", "title": "Search Projects", "category": "Projects", "icon": "$(search)" },
+      { "command": "projectSwitcher.rename", "title": "Rename Project", "category": "Projects", "icon": "$(edit)" },
+      { "command": "projectSwitcher.remove", "title": "Remove from List", "category": "Projects", "icon": "$(trash)" },
+      { "command": "projectSwitcher.refresh", "title": "Refresh Projects", "category": "Projects", "icon": "$(refresh)" },
+      { "command": "projectSwitcher.editStorage", "title": "Open Saved Projects File", "category": "Projects" }
+    ],
+    "viewsContainers": {
+      "activitybar": [{ "id": "projectSwitcher", "title": "Projects", "icon": "media/projects.svg" }]
+    },
+    "views": {
+      "projectSwitcher": [{ "id": "projectSwitcher.projects", "name": "Saved Projects" }]
+    },
+    "viewsWelcome": [{
+      "view": "projectSwitcher.projects",
+      "contents": "Your projects, one click away.\n[Add Project Folders](command:projectSwitcher.add)\n[Save Current Project](command:projectSwitcher.saveCurrent)\nSaved projects are shared between local VS Code and Antigravity IDE windows."
+    }],
+    "menus": {
+      "view/title": [
+        { "command": "projectSwitcher.add", "when": "view == projectSwitcher.projects", "group": "navigation@1" },
+        { "command": "projectSwitcher.search", "when": "view == projectSwitcher.projects", "group": "navigation@2" },
+        { "command": "projectSwitcher.refresh", "when": "view == projectSwitcher.projects", "group": "navigation@3" },
+        { "command": "projectSwitcher.saveCurrent", "when": "view == projectSwitcher.projects", "group": "1_projects" },
+        { "command": "projectSwitcher.editStorage", "when": "view == projectSwitcher.projects", "group": "2_storage" }
+      ],
+      "view/item/context": [
+        { "command": "projectSwitcher.openInNewWindow", "when": "view == projectSwitcher.projects && viewItem == savedProject", "group": "inline@1" },
+        { "command": "projectSwitcher.openInNewWindow", "when": "view == projectSwitcher.projects && viewItem == savedProject", "group": "1_open@1" },
+        { "command": "projectSwitcher.rename", "when": "view == projectSwitcher.projects && viewItem == savedProject", "group": "1_manage@1" },
+        { "command": "projectSwitcher.remove", "when": "view == projectSwitcher.projects && viewItem == savedProject", "group": "1_manage@2" }
+      ]
+    },
+    "configuration": {
+      "title": "Project Switcher",
+      "properties": {
+        "projectSwitcher.openInNewWindow": {
+          "type": "boolean", "default": false, "scope": "window",
+          "description": "Open selected projects in a new window instead of replacing the current workspace."
+        },
+        "projectSwitcher.storagePath": {
+          "type": "string", "default": "", "scope": "machine",
+          "description": "Absolute path to the shared projects JSON file. Empty uses ~/.project-switcher/projects.json. Set the same path in both editors to share a custom list. Reload the window after changing this setting."
+        }
+      }
+    }
+  }
+}

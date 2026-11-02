@@ -1,0 +1,8 @@
+{
+  "name": "project-switcher-workspace-probe",
+  "publisher": "local-project-tools",
+  "version": "0.0.1",
+  "engines": { "vscode": "^1.85.0" },
+  "main": "./index.js",
+  "activationEvents": ["*"]
+}
