@@ -4,17 +4,23 @@
 
 ## Mô tả
 
-> [PLACEHOLDER: Viết mô tả extension của bạn tại đây.]
+Khi làm việc với nhiều dự án, bạn thường phải tìm và mở lại các thư mục mỗi lần khởi động IDE. Project Switcher cung cấp một sidebar riêng để sắp xếp và chuyển đổi giữa các dự án. Chỉ cần thêm mỗi thư mục một lần, sau đó mở từ danh sách đã lưu bất cứ khi nào cần.
+
+Tương thích với **VS Code desktop** và **Antigravity IDE**.
 
 ## Cách sử dụng
 
 ### Cài đặt
 
-1. Lấy file đã đóng gói `project-switcher-<version>.vsix` trong `dist/`. Để tự đóng gói từ mã nguồn, chạy `npm ci --ignore-scripts`, sau đó chạy `npm run package`.
+**[Tải Project Switcher 0.1.1 (.vsix)](https://github.com/thanhklt/vscode-project-switcher/raw/refs/heads/main/dist/project-switcher-0.1.1.vsix)**
+
+1. Bấm liên kết tải ở trên để lưu file `project-switcher-0.1.1.vsix` về máy. Bạn cũng có thể xem các bản đóng gói trong [thư mục `dist/`](https://github.com/thanhklt/vscode-project-switcher/tree/main/dist).
 2. Trong VS Code desktop hoặc Antigravity IDE, mở **Extensions** → **…** → **Install from VSIX…** rồi chọn file đó.
 3. Tải lại editor nếu được yêu cầu, sau đó chọn **Projects** trên thanh Activity Bar.
 
 Cài extension trong từng IDE mà bạn muốn sử dụng.
+
+Để tự đóng gói VSIX từ mã nguồn, chạy `npm ci --ignore-scripts`, sau đó chạy `npm run package`. File đóng gói được lưu trong `dist/`.
 
 ### Quản lý project
 

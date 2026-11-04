@@ -26,11 +26,15 @@ Click a project to open it in the current IDE window. To open it in a new window
 
 ### Installation
 
-1. Obtain a packaged `project-switcher-<version>.vsix` file from `dist/`. To build it from source, run `npm ci --ignore-scripts` followed by `npm run package`.
+**[Download Project Switcher 0.1.1 (.vsix)](https://github.com/thanhklt/vscode-project-switcher/raw/refs/heads/main/dist/project-switcher-0.1.1.vsix)**
+
+1. Click the download link above to save `project-switcher-0.1.1.vsix` to your computer. You can also browse the available packages in the [`dist/` folder](https://github.com/thanhklt/vscode-project-switcher/tree/main/dist).
 2. In VS Code desktop or Antigravity IDE, open **Extensions** → **…** → **Install from VSIX…** and select the file.
 3. Reload the editor if prompted, then select **Projects** in the Activity Bar.
 
 Install the extension in each IDE where you want to use it.
+
+To build the VSIX from source, run `npm ci --ignore-scripts` followed by `npm run package`. The packaged file is saved in `dist/`.
 
 ### Manage projects
 
